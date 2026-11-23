@@ -112,7 +112,7 @@
 .mcard p{margin:0;font-size:13px;line-height:1.6;color:#3B4A45}
 .mcard:not(.mimg){justify-content:center}
 .creds{list-style:none;padding:0;margin:0}
-  .creds li{display:flex;gap:10px;font-size:13.5px;color:#3B4A45;padding:5px 0;border-bottom:1px dashed rgba(31,58,52,.10)}
+  .creds li{display:flex;gap:10px;font-size:13.5px;color:#3B4A45;padding:3px 0;border-bottom:1px dashed rgba(31,58,52,.10)}
   .creds li{gap:8px}
   .creds li b{color:var(--brown);flex:0 0 72px;white-space:nowrap;font-size:11.5px;letter-spacing:-.02em;line-height:1.9;font-weight:800}
   /* ⚠️ 這裡原本是 white-space:nowrap → 公司全名＋職稱一長就頂出卡片右緣（實測「受眾 25 萬+」被切掉）。
@@ -165,11 +165,10 @@
   .sec-title em{font-style:normal;color:var(--brown-text)}
 
   /* ── 橫向卡片輪播（對應原圖 1/7～7/7） ── */
-  /* 卡片頂端對齊（不拉伸成最高卡）；容器高度由 bindRail 的 fitRail() 量「當前那張卡」後寫進 style.height，
-     所以看第 1 張時下方不會留最高卡造成的空洞，圓點也緊貼卡片下方。沒有 JS 時退回自然高度（最高卡）。 */
-  .rail{display:flex;align-items:flex-start;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 14px;scrollbar-width:none}
-  .rail.fit{overflow-y:hidden;transition:height .22s ease}
-  @media (prefers-reduced-motion:reduce){ .rail.fit{transition:none} }
+  /* 4 張卡外框等高（stretch）→ 容器高度＝最高卡且固定不變。
+     ⚠ 絕不能在捲動時改容器高度：reflow 會讓 scroll-snap-type:mandatory 重算吸附點，把位置甩到最前／最後。
+     所以 4 張卡的內容高度要調到接近（見 .svc），避免 stretch 後出現大片空白。 */
+  .rail{display:flex;align-items:stretch;gap:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding:4px 20px 14px;scrollbar-width:none}
   .rail::-webkit-scrollbar{display:none}
   /* 左右箭頭（JS 在 bindRail 建立）：疊在輪播列兩側、垂直置中；44×44 觸控區 */
   .rail-wrap{position:relative}
@@ -207,23 +206,34 @@
         font-size:13.5px;text-align:center;font-weight:700;letter-spacing:.03em}
 
   /* 三大服務 */
-  .svc{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px dashed rgba(31,58,52,.12)}
-  .svc:last-child{border-bottom:0;padding-bottom:12px}
-  .svc .ico{flex:0 0 40px;height:40px;border-radius:12px;background:#F3EDE4;display:flex;
+  /* 圖示＋標題＋標籤在上一排，說明文字整排攤開在下（不再被圖示欄擠窄而多換行）；
+     內層 div 用 display:contents 讓 h4/tagsm/p 直接成為 grid 項目 */
+  .svc{display:grid;grid-template-columns:40px 1fr;column-gap:12px;align-items:center;padding:21px 0;border-bottom:1px dashed rgba(31,58,52,.12)}
+  .svc:last-child{border-bottom:0;padding-bottom:8px}
+  .svc>div:not(.ico){display:contents}
+  .svc .ico{grid-row:1 / span 2;width:40px;height:40px;border-radius:12px;background:#F3EDE4;display:flex;
             align-items:center;justify-content:center;font-size:19px}
-  .svc h4{margin:0 0 2px;font-size:16px;color:var(--navy)}
-  .svc .tagsm{font-size:12px;color:var(--brown-text);font-weight:700;letter-spacing:.06em;margin-bottom:4px}
-  .svc p{margin:0;font-size:14px;color:#4E5A53;line-height:1.7}
+  .svc h4{margin:0;font-size:16px;color:var(--navy);align-self:end}
+  .svc .tagsm{font-size:12px;color:var(--brown-text);font-weight:700;letter-spacing:.06em;align-self:start}
+  .svc p{grid-column:1 / -1;margin:8px 0 0;font-size:14px;color:#4E5A53;line-height:1.75}
+  /* 聯絡卡（最後一張）自然高度最短：用行距補，不加字 */
+  .card:last-child .box{margin-top:16px;padding:18px 14px}
+  .card:last-child .info.flat{margin-top:18px}
+  .card:last-child .info .row{padding:10px 0}
+  .card:last-child .cta-row{margin-top:22px}
+  .card:last-child .cta-links{margin-top:10px}
 
   /* 數據 */
-  .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 14px}
-  .stats div{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;border-radius:14px;padding:13px 10px;text-align:center}
-  .stats b{display:block;font-size:23px;color:var(--gold-2);letter-spacing:.02em;line-height:1.3}
-  .stats span{font-size:12px;color:#C8D8D0;letter-spacing:.02em}
+  /* 數據：一項一列（左大字、右說明），比原本 2 欄置中少約 130px，讓這張卡不再是 4 張裡最高的 */
+  .stats{display:grid;grid-template-columns:1fr;gap:6px;margin:4px 0 10px}
+  .stats div{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;border-radius:12px;padding:8px 12px;
+             display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:right}
+  .stats b{display:block;flex:0 0 auto;font-size:18px;color:var(--gold-2);letter-spacing:.02em;line-height:1.3;text-align:left}
+  .stats span{font-size:12px;color:#C8D8D0;letter-spacing:.02em;min-width:0}
   .steps{list-style:none;margin:0;padding:0;counter-reset:s}
-  .steps li{position:relative;padding:9px 0 9px 46px;border-bottom:1px dashed rgba(31,58,52,.10);font-size:14px;color:#3B4A45}
+  .steps li{position:relative;padding:5px 0 5px 42px;border-bottom:1px dashed rgba(31,58,52,.10);font-size:13.5px;line-height:1.6;color:#3B4A45}
   .steps li:last-child{border-bottom:0}
-  .steps li::before{counter-increment:s;content:"0" counter(s);position:absolute;left:0;top:9px;
+  .steps li::before{counter-increment:s;content:"0" counter(s);position:absolute;left:0;top:5px;
         font-size:13px;font-weight:800;color:#fff;background:#3A6B5E;border-radius:8px;padding:3px 7px}
   .steps b{color:var(--navy)}
 
@@ -1944,25 +1954,15 @@ function bindRail(){
     try{ rail.scrollTo({left: left, behavior: calm ? 'auto' : 'smooth'}); }
     catch(e){ rail.scrollLeft = left; }
   };
-  /* 容器高度跟著「當前那張卡」：卡片 align-items:flex-start 各自保持自然高度，
-     rail 的高度 = 當前卡高 + 上下 padding，下方圓點就緊貼在卡片正下方，不會落在最高卡造成的空洞之下。 */
-  let cur = 0;
-  const fitRail = () => {
-    const c = rail.children[cur];
-    if(!c) return;
-    const cs = getComputedStyle(rail);
-    const h = Math.ceil(c.offsetHeight + (parseFloat(cs.paddingTop) || 0) + (parseFloat(cs.paddingBottom) || 0));
-    rail.classList.add('fit');
-    if(rail.style.height !== h + 'px') rail.style.height = h + 'px';
-    try{ updateArrows(); }catch(e){}   /* 卡高變了，箭頭要重新對齊該卡中心（首次同步呼叫時 updateArrows 尚未定義，略過即可） */
-  };
+  /* 容器高度由 CSS（align-items:stretch，＝最高卡）決定，這裡「不寫」任何高度，捲動路徑零 reflow。
+     尺寸變動（載入、旋轉、字型）只重新對齊箭頭。 */
+  const fitRail = () => { try{ updateArrows(); }catch(e){} };
   try{
     if(window.ResizeObserver){
       const ro = new ResizeObserver(() => fitRail());
       [...rail.children].forEach(c => ro.observe(c));
     }
   }catch(e){}
-  window.addEventListener('resize', fitRail);
   window.addEventListener('load', fitRail);
   const dotAt = t => { const d = t.closest ? t.closest('i') : null; return d ? dots.indexOf(d) : -1; };
   countEl.addEventListener('click', e => { const i = dotAt(e.target); if(i >= 0) goTo(i); });
@@ -1986,8 +1986,6 @@ function bindRail(){
     });
     if(best === shown) return;
     shown = best;
-    cur = best;
-    fitRail();
     if(dots.length){
       dots.forEach((d, i) => {
         d.classList.toggle('on', i === best);
@@ -2052,13 +2050,30 @@ function bindRail(){
     arrowR.addEventListener('click', () => goTo(Math.min(n - 1, shown + 1)));
     window.addEventListener('resize', updateArrows);
   }catch(e){ arrowL = arrowR = null; }
-  /* scroll 事件節流：每個畫面最多算一次 */
-  let ticking = false;
-  rail.addEventListener('scroll', () => {
+  /* scroll 事件節流：每個畫面最多算一次。
+     ⚠ 不能只靠 requestAnimationFrame 解鎖：分頁被背景化／被節流時（手機切到別的 App、
+     LINE 內建瀏覽器退到背景、螢幕關掉、無頭瀏覽器）rAF 回呼根本不會執行，
+     ticking 會永遠卡在 true，之後所有 scroll 都被吃掉 → 圓點不更新、
+     fitRail 不跑、比容器高的卡片被 overflow-y:hidden 裁掉。
+     所以：rAF + setTimeout 雙保險，再加上 visibilitychange 解鎖。 */
+  let ticking = false, tickTimer = null;
+  const runTick = () => {
+    if(tickTimer){ clearTimeout(tickTimer); tickTimer = null; }
+    ticking = false;
+    setCount();
+  };
+  const onScroll = () => {
     if(ticking) return;
     ticking = true;
-    (window.requestAnimationFrame || setTimeout)(() => { ticking = false; setCount(); });
-  }, {passive:true});
+    if(window.requestAnimationFrame) requestAnimationFrame(runTick);
+    tickTimer = setTimeout(runTick, 120);          /* rAF 不來時的保險 */
+  };
+  rail.addEventListener('scroll', onScroll, {passive:true});
+  if('onscrollend' in window) rail.addEventListener('scrollend', onScroll, {passive:true});
+  document.addEventListener('visibilitychange', () => {
+    if(!document.hidden){ ticking = false; setCount(); }   /* 回到前景時解鎖並重算 */
+  });
+  window.addEventListener('pageshow', () => { ticking = false; setCount(); });
   setCount();
 }
 bindRail();
