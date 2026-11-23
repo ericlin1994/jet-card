@@ -1553,6 +1553,38 @@
                     },
                     {
                       "type": "text",
+                      "text": "淡水區鄧公路 35 巷 19 弄 3 號",
+                      "size": "md",
+                      "weight": "regular",
+                      "color": "#FFFFFF",
+                      "wrap": true,
+                      "margin": "none",
+                      "flex": 7
+                    }
+                  ],
+                  "spacing": "sm",
+                  "margin": "none"
+                },
+                {
+                  "type": "separator",
+                  "margin": "lg",
+                  "color": "#42544E"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "🚗",
+                      "size": "lg",
+                      "weight": "regular",
+                      "color": "#26A69A",
+                      "wrap": false,
+                      "flex": 1
+                    },
+                    {
+                      "type": "text",
                       "text": "服務範圍 雙北為主・全台可約",
                       "size": "md",
                       "weight": "regular",
@@ -1645,7 +1677,7 @@
                   "action": {
                     "type": "uri",
                     "label": "導航到門市",
-                    "uri": "https://liff.line.me/2011946176-OWaDN0zD?t=1&c=jet&to=map&u=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3D%25E6%258D%25B7%25E5%2588%25A9%25E5%258B%2581%2520%25E5%2586%25B7%25E6%25B0%25A3%25E6%25B8%2585%25E6%25B4%2597"
+                    "uri": "https://liff.line.me/2011946176-OWaDN0zD?t=1&c=jet&to=map&u=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3D%25E6%258D%25B7%25E5%2588%25A9%25E5%258B%2581%2520%25E6%2596%25B0%25E5%258C%2597%25E5%25B8%2582%25E6%25B7%25A1%25E6%25B0%25B4%25E5%258D%2580%25E9%2584%25A7%25E5%2585%25AC%25E8%25B7%25AF35%25E5%25B7%25B719%25E5%25BC%25843%25E8%2599%259F"
                   }
                 }
               ],
