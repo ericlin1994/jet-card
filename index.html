@@ -714,6 +714,33 @@
   </script>
 
   <style>
+  #practice{scroll-margin-top:66px}
+  #practice .px-sub{margin:-4px 20px 10px;font-size:13px;line-height:1.7;color:var(--muted)}
+  #practice .px-h{margin:14px 20px 8px;font-size:15px;font-weight:800;color:var(--navy);letter-spacing:.06em}
+  #practice figure{margin:0;background:#fff;border:1px solid rgba(31,58,52,.10);border-radius:14px;overflow:hidden}
+  #practice figure>div{position:relative}
+  #practice img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;cursor:zoom-in}
+  #practice figcaption{padding:9px 13px 11px;font-size:12.5px;line-height:1.6;color:#5F706A}
+  #practice .px-cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 16px 4px}
+  #practice .px-cmp figcaption{font-size:13px}
+  #practice .px-tag{position:absolute;left:10px;top:10px;min-height:32px;padding:0 14px;display:inline-flex;align-items:center;border-radius:999px;color:#fff;font-size:14px;font-weight:800;letter-spacing:.08em;pointer-events:none}
+  #practice .px-tag.b{background:#8A2D1F}
+  #practice .px-tag.a{background:#1F6B3F}
+  #practice .px-more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 16px 14px}
+  @media (max-width:520px){#practice .px-cmp{grid-template-columns:1fr}}
+  </style>
+  <section id="practice">
+  <h2 class="sec-title">PRACTICE｜<em>案例實作</em></h2>
+  <p class="px-sub">這些都是現場拍的照片：同一台冷氣清洗前後的樣子，還有施工前的保護、現場作業，以及預約前請先準備的照片。</p>
+  <div data-album="practice">
+  <h3 class="px-h">同一台冷氣，清洗前後</h3>
+  <div class="px-cmp"><figure><div><img src="img/case-before-395a6a0d.jpg" alt="同一台冷氣內部清洗前：厚灰塵與黑色霉斑" loading="lazy" decoding="async"><span class="px-tag b">清洗前</span></div><figcaption>冷氣內部清洗前：蒸發器上有厚厚的灰塵與黑色霉斑</figcaption></figure><figure><div><img src="img/case-after-784a8485.jpg" alt="同一台冷氣內部清洗後：表面乾淨許多" loading="lazy" decoding="async"><span class="px-tag a">清洗後</span></div><figcaption>同一台、同一個角度清洗後：灰塵與霉斑少了很多，表面乾淨許多</figcaption></figure></div>
+  <h3 class="px-h">更多現場紀錄</h3>
+  <div class="px-more"><figure><img src="img/case-site-42aa852d.jpg" alt="施工現場走廊，拆卸作業進行中" loading="lazy" decoding="async"><figcaption>施工現場：在走廊進行拆卸作業</figcaption></figure><figure><img src="img/case-protect-b785bddb.jpg" alt="清洗前以防護套覆蓋洗衣機與周邊" loading="lazy" decoding="async"><figcaption>清洗前先用防護套蓋住洗衣機與周邊物品</figcaption></figure><figure><img src="img/case-wind-79206e59.jpg" alt="台北港世紀風電辦公空間施工現場" loading="lazy" decoding="async"><figcaption>台北港世紀風電：商用辦公空間的施工現場</figcaption></figure><figure><img src="img/case-intake-edf7da94.jpg" alt="預約前請提供型號與環境照片的示意拼圖" loading="lazy" decoding="async"><figcaption>預約前，請先提供冷氣、洗衣機、抽油煙機的型號與環境照片</figcaption></figure></div>
+  </div>
+  </section>
+
+  <style>
   #ach .ax-sub{margin:-4px 20px 10px;font-size:13px;line-height:1.7;color:#5F706A}
   #ach .ax-num{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 16px 10px}
   #ach .ax-num>div{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;border-radius:14px;padding:13px 12px}
@@ -2127,7 +2154,7 @@ bindRail();
     document.addEventListener('click', e => {
       const t = e.target;
       if(!t || !t.closest || !box.hidden) return;
-      const img = t.closest('.wall img, .craft img, #case img, #ach img');   /* 已被換成 .ph 的就不會命中 */
+      const img = t.closest('.wall img, .craft img, #case img, #ach img, #practice img');   /* 已被換成 .ph 的就不會命中 */
       if(!img || !(img.currentSrc || img.src)) return;
       list = albumOf(img) || [];
       if(!list.length) return;
