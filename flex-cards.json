@@ -232,7 +232,7 @@
         },
         "hero": {
           "type": "image",
-          "url": "https://jet.cardtaiwan.com/img/card1-988d8d9b.jpg",
+          "url": "https://jet.cardtaiwan.com/img/card1-dadf5ee1.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover",
@@ -260,7 +260,7 @@
           "contents": [
             {
               "type": "text",
-              "text": "一般家庭・社區住戶・店面商家・辦公室・管委會・包租代管",
+              "text": "家庭・店面・辦公室・社區都可約",
               "size": "xxs",
               "weight": "regular",
               "color": "#9BB8C0",
@@ -471,7 +471,7 @@
         },
         "hero": {
           "type": "image",
-          "url": "https://jet.cardtaiwan.com/img/card2-31dbb771.jpg",
+          "url": "https://jet.cardtaiwan.com/img/card2-59e9ac76.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover",
@@ -499,7 +499,7 @@
           "contents": [
             {
               "type": "text",
-              "text": "冷氣清洗・洗衣機清洗・除塵蟎・抽油煙機・居家清潔",
+              "text": "冷氣・洗衣機・除塵蟎・抽油煙機",
               "size": "xxs",
               "weight": "regular",
               "color": "#9BB8C0",
@@ -710,7 +710,7 @@
         },
         "hero": {
           "type": "image",
-          "url": "https://jet.cardtaiwan.com/img/card3-a9abfcd7.jpg",
+          "url": "https://jet.cardtaiwan.com/img/card3-1b3aa0ad.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover",
@@ -738,7 +738,7 @@
           "contents": [
             {
               "type": "text",
-              "text": "從業 5 年＋・教學導師・14 天保固・透明報價",
+              "text": "從業 5 年＋・14 天保固・透明報價",
               "size": "xxs",
               "weight": "regular",
               "color": "#9BB8C0",
@@ -949,7 +949,7 @@
         },
         "hero": {
           "type": "image",
-          "url": "https://jet.cardtaiwan.com/img/card4-7790a6d0.jpg",
+          "url": "https://jet.cardtaiwan.com/img/card4-4f4ab73c.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover",
@@ -977,7 +977,7 @@
           "contents": [
             {
               "type": "text",
-              "text": "無毒藥劑、透明報價、14 天保固。冷氣的事，交給捷利勁。",
+              "text": "無毒藥劑、透明報價、14 天保固",
               "size": "xxs",
               "weight": "regular",
               "color": "#9BB8C0",
@@ -1188,7 +1188,7 @@
         },
         "hero": {
           "type": "image",
-          "url": "https://jet.cardtaiwan.com/img/card5-0e90eced.jpg",
+          "url": "https://jet.cardtaiwan.com/img/card5-7b7717a4.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover",
@@ -1216,7 +1216,7 @@
           "contents": [
             {
               "type": "text",
-              "text": "價格依機型、現場環境與工法而異；預約前先拍照估價，絕不現場亂加價。",
+              "text": "先拍照估價，絕不現場加價",
               "size": "xxs",
               "weight": "regular",
               "color": "#9BB8C0",
@@ -1426,7 +1426,7 @@
         },
         "hero": {
           "type": "image",
-          "url": "https://jet.cardtaiwan.com/img/card6-4689829f.jpg",
+          "url": "https://jet.cardtaiwan.com/img/card6-a32c429a.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover",
