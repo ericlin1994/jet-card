@@ -1426,7 +1426,7 @@
         },
         "hero": {
           "type": "image",
-          "url": "https://jet.cardtaiwan.com/img/card6-abcf7f2e.jpg",
+          "url": "https://jet.cardtaiwan.com/img/card6-b52fe528.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover",
@@ -1585,7 +1585,7 @@
                     },
                     {
                       "type": "text",
-                      "text": "服務範圍 雙北為主・全台可約",
+                      "text": "服務範圍 北北桃為主・全台可約",
                       "size": "md",
                       "weight": "regular",
                       "color": "#FFFFFF",
