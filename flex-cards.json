@@ -1683,6 +1683,54 @@
               ],
               "spacing": "none",
               "margin": "md"
+            },
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "image",
+                      "url": "https://jet.cardtaiwan.com/img/icon-form-w1.png",
+                      "size": "20px",
+                      "aspectRatio": "1:1",
+                      "aspectMode": "cover",
+                      "flex": 0
+                    },
+                    {
+                      "type": "text",
+                      "text": "BNI表單",
+                      "size": "xxs",
+                      "weight": "bold",
+                      "color": "#FFFFFF",
+                      "wrap": true,
+                      "align": "center"
+                    }
+                  ],
+                  "spacing": "xs",
+                  "paddingAll": "10px",
+                  "background": {
+                    "type": "linearGradient",
+                    "angle": "90deg",
+                    "startColor": "#42938C",
+                    "endColor": "#17635C"
+                  },
+                  "cornerRadius": "100px",
+                  "flex": 1,
+                  "borderWidth": "1px",
+                  "borderColor": "#58A09A",
+                  "action": {
+                    "type": "uri",
+                    "label": "BNI表單",
+                    "uri": "https://liff.line.me/2011946176-OWaDN0zD?t=1&c=jet&to=form&u=https%3A%2F%2Fjet.cardtaiwan.com%2Fbni-form.pdf"
+                  }
+                }
+              ],
+              "spacing": "none",
+              "margin": "md"
             }
           ],
           "spacing": "lg",
